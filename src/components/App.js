@@ -16,7 +16,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(true);
   const [isNotificationOpen, setNotificationOpen] = useState(false);
   useEffect(() => {
-    const jwt = localStorage.jwt;
+    const jwt = localStorage.getItem("jwt");
     if (jwt) {
       auth
         .getMe(jwt)
@@ -46,6 +46,7 @@ function App() {
           </Route>
           <Route path="/react-mesto-auth/sign-in">
             <Login
+              setSuccess={setSuccess}
               setLoggedIn={setLoggedIn}
               setNotificationOpen={setNotificationOpen}
               setNewCurrentUser={setNewCurrentUser}

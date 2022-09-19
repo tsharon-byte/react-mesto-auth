@@ -116,7 +116,7 @@ const Home = () => {
       .finally(() => setLoading(false));
   };
   const showError = (err) => {
-    setError(err);
+    setError(typeof err === "string" ? err : "Ошибка");
     setTimeout(() => {
       setError("");
     }, 3000);

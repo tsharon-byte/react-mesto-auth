@@ -22,24 +22,16 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  _rejectPromise() {
-    return Promise.reject(`Ошибка`);
-  }
-
   _get(ep) {
     return fetch(this._baseUrl + ep, {
       headers: this._headers,
-    })
-      .then(this._checkResponse)
-      .catch(this._rejectPromise);
+    }).then(this._checkResponse);
   }
 
   _getWithJwt(ep, jwt) {
     return fetch(this._baseUrl + ep, {
       headers: { ...this._headers, Authorization: `Bearer ${jwt}` },
-    })
-      .then(this._checkResponse)
-      .catch(this._rejectPromise);
+    }).then(this._checkResponse);
   }
 
   _patch(ep, data) {
@@ -47,9 +39,7 @@ class Api {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify(data),
-    })
-      .then(this._checkResponse)
-      .catch(this._rejectPromise);
+    }).then(this._checkResponse);
   }
 
   _post(ep, data) {
@@ -57,27 +47,21 @@ class Api {
       headers: this._headers,
       method: "POST",
       body: JSON.stringify(data),
-    })
-      .then(this._checkResponse)
-      .catch(this._rejectPromise);
+    }).then(this._checkResponse);
   }
 
   _put(ep) {
     return fetch(this._baseUrl + ep, {
       headers: this._headers,
       method: "PUT",
-    })
-      .then(this._checkResponse)
-      .catch(this._rejectPromise);
+    }).then(this._checkResponse);
   }
 
   _delete(ep) {
     return fetch(this._baseUrl + ep, {
       headers: this._headers,
       method: "DELETE",
-    })
-      .then(this._checkResponse)
-      .catch(this._rejectPromise);
+    }).then(this._checkResponse);
   }
 
   getInitialCards() {

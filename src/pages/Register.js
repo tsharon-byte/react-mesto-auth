@@ -7,8 +7,8 @@ import SubmitButton from "../components/FormElements/SubmitButton";
 const Register = ({ setNotificationOpen, setSuccess, setNewCurrentUser }) => {
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
-    email: "sharonova_t@inbox.ru",
-    pwd: "dsfsdfsdfsdf",
+    email: "",
+    pwd: "",
   });
   const history = useHistory();
   const handleSubmit = (e) => {
@@ -61,7 +61,7 @@ const Register = ({ setNotificationOpen, setSuccess, setNewCurrentUser }) => {
           className="input form__email"
           id="pwd"
           name="pwd"
-          type="text"
+          type="password"
           required
           placeholder="Пароль"
           value={values.pwd}

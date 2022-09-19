@@ -48,8 +48,12 @@ const Main = memo(
                 <p className="profile__description">{currentUser.about}</p>
               </div>
             </div>
-            <button className="image-button profile__add-button" type="button">
-              <img src={Add} alt="Добавить" onClick={onAddPlace} />
+            <button
+              className="image-button profile__add-button"
+              type="button"
+              onClick={onAddPlace}
+            >
+              <img src={Add} alt="Добавить" />
             </button>
           </section>
         )}

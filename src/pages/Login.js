@@ -5,10 +5,15 @@ import { auth } from "../utils/api";
 import { getMessage } from "../utils/utils";
 import SubmitButton from "../components/FormElements/SubmitButton";
 
-const Login = ({ setLoggedIn, setNotificationOpen, setNewCurrentUser }) => {
+const Login = ({
+  setLoggedIn,
+  setNotificationOpen,
+  setNewCurrentUser,
+  setSuccess,
+}) => {
   const [values, setValues] = useState({
-    email: "sharonova_t@inbox.ru",
-    pwd: "dsfsdfsdfsdf",
+    email: "",
+    pwd: "",
   });
   const [errors, setErrors] = useState({});
   const history = useHistory();
@@ -21,12 +26,14 @@ const Login = ({ setLoggedIn, setNotificationOpen, setNewCurrentUser }) => {
       })
       .then((data) => {
         setLoggedIn(true);
-        localStorage.jwt = data.token;
+        localStorage.setItem("jwt", data.token);
         setNewCurrentUser({ email: values.email });
+        setSuccess(true);
         history.push("/react-mesto-auth/");
       })
       .catch(() => {
         setNotificationOpen(true);
+        setSuccess(false);
         localStorage.clear();
       });
   };
@@ -61,7 +68,7 @@ const Login = ({ setLoggedIn, setNotificationOpen, setNewCurrentUser }) => {
           className="input form__email"
           id="pwd"
           name="pwd"
-          type="text"
+          type="password"
           required
           placeholder="Пароль"
           value={values.pwd}
