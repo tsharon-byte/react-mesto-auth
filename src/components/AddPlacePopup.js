@@ -6,6 +6,7 @@ const AddPlacePopup = memo(({ isOpen, onClose, onSubmit }) => {
   const defaultState = { name: "", link: "" };
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState(defaultState);
+
   useEffect(() => {
     setValues(defaultState);
   }, [isOpen]);
@@ -14,6 +15,7 @@ const AddPlacePopup = memo(({ isOpen, onClose, onSubmit }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: getMessage(e) });
   };
+
   return (
     <PopupWithForm
       name="placeAdd"

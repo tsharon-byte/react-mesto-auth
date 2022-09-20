@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const SubmitButtonNormal = ({ errors, text, loading, buttonTextLoading }) => {
   const [disabled, setDisabled] = useState(false);
+
   useEffect(() => {
     let result = false;
     for (let prop in errors) {

@@ -8,6 +8,7 @@ const EditProfilePopup = memo(({ isOpen, onClose, onUpdateUser }) => {
   const defaultState = { name: "", about: "" };
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState(defaultState);
+
   useEffect(() => {
     setValues({
       name: currentUser.name || "",

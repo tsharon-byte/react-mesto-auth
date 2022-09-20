@@ -116,7 +116,11 @@ const Home = () => {
       .finally(() => setLoading(false));
   };
   const showError = (err) => {
-    setError(typeof err === "string" ? err : "Ошибка");
+    setError(
+      err.code
+        ? `Произошла ошибка с кодом ${err.code}`
+        : "Произошла ошибка сети"
+    );
     setTimeout(() => {
       setError("");
     }, 3000);
@@ -157,6 +161,7 @@ const Home = () => {
         .finally(() => setLoadingCards(false));
     }
   }, [currentUser._id, toUpdate]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <LoadingContext.Provider value={loading}>

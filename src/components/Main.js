@@ -28,11 +28,10 @@ const Main = memo(
                   className="avatar__picture"
                   style={{ backgroundImage: `url(${currentUser.avatar})` }}
                 />
-                <div className="avatar__button">
+                <div className="avatar__button" onClick={onEditAvatar}>
                   <button
                     className="image-button avatar__edit-button"
                     type="button"
-                    onClick={onEditAvatar}
                   />
                 </div>
               </div>

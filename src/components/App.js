@@ -15,6 +15,7 @@ function App() {
   const [success, setSuccess] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
   const [isNotificationOpen, setNotificationOpen] = useState(false);
+
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -31,6 +32,14 @@ function App() {
       setLoggedIn(false);
     }
   }, []);
+
+  const handleNotificationPopupClosed = () => {
+    setNotificationOpen(false);
+    if (loggedIn) {
+      history.push("/react-mesto-auth/");
+    }
+  };
+
   return (
     <NewCurrentUserContext.Provider value={newCurrentUser}>
       <div className="page">
@@ -61,12 +70,7 @@ function App() {
         <InfoTooltip
           success={success}
           isOpen={isNotificationOpen}
-          onClose={() => {
-            setNotificationOpen(false);
-            if (loggedIn) {
-              history.push("/react-mesto-auth/");
-            }
-          }}
+          onClose={handleNotificationPopupClosed}
         />
       </div>
     </NewCurrentUserContext.Provider>

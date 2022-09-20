@@ -1,4 +1,4 @@
-import { useRef, memo, useState } from "react";
+import { useRef, memo, useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { getMessage } from "../utils/utils";
 
@@ -6,14 +6,18 @@ const EditAvatarPopup = memo(({ isOpen, onClose, onUpdateAvatar }) => {
   const avatarRef = useRef("");
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    avatarRef.current.value = "";
+  }, [isOpen]);
+
   const handleAvatarSubmit = (e) => {
     e.preventDefault();
 
     onUpdateAvatar({
       avatar: avatarRef.current.value,
     });
-    avatarRef.current.value = "";
   };
+
   return (
     <PopupWithForm
       name="avatarEdit"
